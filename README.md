@@ -1,33 +1,40 @@
 # Teams OneDrive Sync Diagnostic Toolkit
 
-A read-only PowerShell toolkit for Microsoft Teams and OneDrive support checks.
+A PowerShell toolkit for Microsoft Teams and OneDrive support checks and selected guarded repairs.
 
-## Features
-
-- Teams and OneDrive process context
-- Installation path detection
-- Microsoft 365 connectivity checks
-- OneDrive known environment context
-- CSV, JSON, and HTML reports
-
-## How to run
+## Diagnostic script
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File .\Teams_OneDrive_Sync_Diagnostic_Toolkit.ps1
 ```
 
+## Repair script
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\Teams_OneDrive_Repair_Toolkit.ps1 -ResetOneDrive -DryRun
+```
+
+Examples:
+
+```powershell
+.\Teams_OneDrive_Repair_Toolkit.ps1 -ResetOneDrive
+.\Teams_OneDrive_Repair_Toolkit.ps1 -ClearTeamsCache
+.\Teams_OneDrive_Repair_Toolkit.ps1 -RestartApps
+```
+
+## What the repair does
+
+- Closes Teams and OneDrive before maintenance.
+- Runs the supported OneDrive `/reset` operation and starts OneDrive again.
+- Clears classic Teams and new Teams local cache paths.
+- Can restart the OneDrive client after closing applications.
+- Captures process, sync-root and Cloud Files service state before and after repair.
+- Supports `-DryRun`, confirmation prompts, logs and clear exit codes.
+
 ## Safety
 
-Diagnostic-only. It does not clear caches, remove accounts, or change sync settings.
+OneDrive reset does not delete cloud files but rebuilds local sync state and may require time to resynchronise. Teams cache clearing can require sign-in again. The tool does not remove accounts or credentials.
 
-## Suggested topics
+## Author
 
-```text
-powershell
-teams
-onedrive
-microsoft-365
-helpdesk
-it-support
-troubleshooting
-```
+Dewald Pretorius — L2 IT Support Engineer
