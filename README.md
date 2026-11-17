@@ -38,3 +38,11 @@ OneDrive reset does not delete cloud files but rebuilds local sync state and may
 ## Author
 
 Dewald Pretorius — L2 IT Support Engineer
+
+## November 2026 field incident case study
+
+- [Incident runbook](case-studies/2026-11-moved-sharepoint-folder-recovery.md): SharePoint folder move/restore: restoration and re-sync pending.
+- [Reusable PowerShell helper](examples/Get-OneDriveClientEvidence.ps1): read-only OneDrive client evidence.
+- [Pester static validation](tests/StaticQuality.Tests.ps1) and [read-only CI workflow](.github/workflows/pester-static-qa.yml).
+
+These case studies are anonymized. Review all commands and check the actual environment before execution. CI passing does **not** mean the original incident is fully remediated.
